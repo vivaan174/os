@@ -1,0 +1,31 @@
+2026-04-19 00:30:20,902 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:30:38,328 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:32:41,828 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:34:13,063 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:37:29,382 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:38:20,477 - INFO - Registered process HighPriorityApp (PID: 17628) with priority HIGH
+2026-04-19 00:38:20,477 - INFO - Registered process NormalPriorityApp (PID: 2056) with priority NORMAL
+2026-04-19 00:38:31,173 - INFO - Changed allocation strategy to: equal
+2026-04-19 00:38:38,496 - INFO - Changed allocation strategy to: priority
+2026-04-19 00:38:47,922 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:38:57,043 - INFO - Changed allocation strategy to: demand
+2026-04-19 00:41:31,701 - INFO - Changed allocation strategy to: equal
+2026-04-19 00:41:31,703 - INFO - Changed allocation strategy to: priority
+2026-04-19 00:41:31,703 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:41:31,703 - INFO - Changed allocation strategy to: demand
+2026-04-19 00:41:39,913 - INFO - Registered process TestProcess (PID: 14112) with priority HIGH
+2026-04-19 00:41:39,913 - INFO - Changed allocation strategy to: priority
+2026-04-19 00:44:29,488 - INFO - Registered process TestApp (PID: 7484) with priority CRITICAL
+2026-04-19 00:44:29,492 - INFO - Registered process TestApp (PID: 7484) with priority NORMAL
+2026-04-19 00:44:29,492 - INFO - Set priority for PID 7484 to HIGH
+2026-04-19 00:44:29,495 - INFO - Registered process TestApp (PID: 7484) with priority NORMAL
+2026-04-19 00:44:29,495 - INFO - Registered process TestApp (PID: 7484) with priority NORMAL
+2026-04-19 00:44:29,496 - INFO - Unregistered process PID: 7484
+2026-04-19 00:44:52,818 - INFO - Changed allocation strategy to: equal
+2026-04-19 00:44:52,819 - INFO - Changed allocation strategy to: priority
+2026-04-19 00:44:52,821 - INFO - Changed allocation strategy to: performance
+2026-04-19 00:44:52,822 - INFO - Changed allocation strategy to: demand
+2026-04-19 00:45:01,100 - INFO - Registered process TestProcess (PID: 7484) with priority HIGH
+2026-04-19 00:45:01,100 - INFO - Changed allocation strategy to: priority
+2026-04-19 00:46:53,071 - INFO - Registered process TestApp (PID: 15836) with priority NORMAL
+2026-04-19 00:46:53,071 - INFO - Changed allocation strategy to: priority

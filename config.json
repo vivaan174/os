@@ -1,0 +1,30 @@
+{
+  "monitoring_interval": 1.0,
+  "optimization_interval": 5.0,
+  "cpu_threshold_high": 80,
+  "cpu_threshold_critical": 95,
+  "memory_threshold_high": 85,
+  "memory_threshold_critical": 95,
+  "allocation_strategy": "performance",
+  "enable_logging": true,
+  "max_history_entries": 300,
+  "reserved_memory_percent": 10,
+  "process_priorities": {
+    "chrome": "NORMAL",
+    "firefox": "NORMAL",
+    "python": "HIGH",
+    "java": "HIGH",
+    "system": "CRITICAL"
+  },
+  "allocation_thresholds": {
+    "cpu_bottleneck": 80,
+    "memory_bottleneck": 85,
+    "gpu_bottleneck": 90
+  },
+  "optimization_settings": {
+    "enable_auto_rebalance": true,
+    "rebalance_interval_seconds": 5,
+    "enable_bottleneck_detection": true,
+    "throttle_on_critical": true
+  }
+}

@@ -1,0 +1,48 @@
+2026-04-19 00:30:20,906 - INFO - Performance optimizer started
+2026-04-19 00:30:38,331 - INFO - Performance optimizer started
+2026-04-19 00:30:46,529 - ERROR - Error in optimization loop: unhashable type: 'ProcessMetrics'
+2026-04-19 00:30:46,529 - INFO - Performance optimizer stopped
+2026-04-19 00:32:41,835 - INFO - Performance optimizer started
+2026-04-19 00:33:09,114 - WARNING - Bottleneck detected for PID 15636: Erratic CPU usage (variance: 3181.8)
+2026-04-19 00:33:18,478 - WARNING - Bottleneck detected for PID 15636: Erratic CPU usage (variance: 2386.3)
+2026-04-19 00:33:23,481 - INFO - Performance optimizer stopped
+2026-04-19 00:34:13,064 - INFO - Performance optimizer started
+2026-04-19 00:34:46,348 - INFO - Performance optimizer stopped
+2026-04-19 00:35:10,602 - INFO - Performance optimizer started
+2026-04-19 00:36:07,181 - INFO - Performance optimizer started
+2026-04-19 00:36:20,723 - INFO - Performance optimizer stopped
+2026-04-19 00:37:29,389 - INFO - Performance optimizer started
+2026-04-19 00:38:00,706 - INFO - Performance optimizer started
+2026-04-19 00:38:14,873 - INFO - Performance optimizer stopped
+2026-04-19 00:38:15,879 - INFO - Performance optimizer started
+2026-04-19 00:38:29,130 - INFO - Performance optimizer stopped
+2026-04-19 00:38:30,145 - INFO - Performance optimizer started
+2026-04-19 00:39:10,899 - INFO - Performance optimizer stopped
+2026-04-19 00:39:11,915 - INFO - Performance optimizer started
+2026-04-19 00:39:39,415 - WARNING - Bottleneck detected for PID 3500: Erratic CPU usage (variance: 954.5)
+2026-04-19 00:39:49,363 - WARNING - Bottleneck detected for PID 3500: Erratic CPU usage (variance: 954.5)
+2026-04-19 00:39:58,759 - WARNING - Bottleneck detected for PID 3500: Erratic CPU usage (variance: 954.5)
+2026-04-19 00:40:08,721 - WARNING - Bottleneck detected for PID 3500: Erratic CPU usage (variance: 954.5)
+2026-04-19 00:40:13,722 - INFO - Performance optimizer stopped
+2026-04-19 00:41:08,828 - INFO - Performance optimizer stopped
+2026-04-19 00:41:08,830 - INFO - Performance optimizer stopped
+2026-04-19 00:41:08,848 - INFO - Performance optimizer started
+2026-04-19 00:41:19,163 - INFO - Performance optimizer stopped
+2026-04-19 00:41:19,210 - INFO - Performance optimizer started
+2026-04-19 00:41:31,698 - INFO - Performance optimizer stopped
+2026-04-19 00:41:31,717 - INFO - Performance optimizer started
+2026-04-19 00:41:44,918 - INFO - Performance optimizer stopped
+2026-04-19 00:41:44,930 - INFO - Performance optimizer started
+2026-04-19 00:41:57,735 - INFO - Performance optimizer stopped
+2026-04-19 00:44:29,505 - INFO - Performance optimizer stopped
+2026-04-19 00:44:29,507 - INFO - Performance optimizer stopped
+2026-04-19 00:44:29,534 - INFO - Performance optimizer started
+2026-04-19 00:44:39,891 - INFO - Performance optimizer stopped
+2026-04-19 00:44:39,917 - INFO - Performance optimizer started
+2026-04-19 00:44:52,814 - INFO - Performance optimizer stopped
+2026-04-19 00:44:52,833 - INFO - Performance optimizer started
+2026-04-19 00:45:06,104 - INFO - Performance optimizer stopped
+2026-04-19 00:45:06,110 - INFO - Performance optimizer started
+2026-04-19 00:45:19,305 - INFO - Performance optimizer stopped
+2026-04-19 00:46:43,847 - INFO - Performance optimizer started
+2026-04-19 00:46:58,070 - INFO - Performance optimizer stopped

@@ -1,0 +1,211 @@
+2026-04-19 00:30:20,900 - DynamicResourceAllocator - INFO - Configuration loaded from config.json
+2026-04-19 00:30:20,902 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:30:20,905 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:30:20,905 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:30:20,905 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:30:20,906 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:30:20,908 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:30:20,908 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:30:20,915 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:30:38,328 - DynamicResourceAllocator - INFO - Configuration loaded from config.json
+2026-04-19 00:30:38,330 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:30:38,330 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:30:38,330 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:30:38,330 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:30:38,331 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:30:38,331 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:30:38,331 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:30:38,338 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:30:46,529 - DynamicResourceAllocator - INFO - System stopped. Uptime: 8.2 seconds
+2026-04-19 00:30:46,529 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:32:41,828 - DynamicResourceAllocator - INFO - Configuration loaded from config.json
+2026-04-19 00:32:41,832 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:32:41,832 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:32:41,832 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:32:41,832 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:32:41,835 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:32:41,835 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:32:41,835 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:33:14,117 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:33:23,483 - DynamicResourceAllocator - INFO - System stopped. Uptime: 41.6 seconds
+2026-04-19 00:33:23,485 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:34:13,063 - DynamicResourceAllocator - INFO - Configuration loaded from config.json
+2026-04-19 00:34:13,063 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:34:13,063 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:34:13,063 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:34:13,064 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:34:13,064 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:34:13,064 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:34:13,064 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:34:36,832 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:34:46,348 - DynamicResourceAllocator - INFO - System stopped. Uptime: 33.3 seconds
+2026-04-19 00:34:46,350 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:35:10,600 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:35:10,600 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:35:10,600 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:35:10,602 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:35:10,602 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:35:10,602 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:36:07,181 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:36:07,181 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:36:07,181 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:36:07,181 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:36:07,181 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:36:07,181 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:36:15,716 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:36:20,723 - DynamicResourceAllocator - INFO - System stopped. Uptime: 13.5 seconds
+2026-04-19 00:36:20,725 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:37:29,382 - DynamicResourceAllocator - INFO - Configuration loaded from config.json
+2026-04-19 00:37:29,382 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:37:29,382 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:37:29,382 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:37:29,382 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:37:29,389 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:37:29,389 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:37:29,389 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:37:29,397 - DynamicResourceAllocator - WARNING - System already running
+2026-04-19 00:38:00,700 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:00,700 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:38:00,700 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:00,706 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:38:00,706 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:38:00,706 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:38:09,874 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:38:14,873 - DynamicResourceAllocator - INFO - System stopped. Uptime: 14.2 seconds
+2026-04-19 00:38:14,874 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:15,875 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:15,876 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:38:15,876 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:15,879 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:38:15,879 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:38:15,879 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:38:20,477 - DynamicResourceAllocator - INFO - Registered program: HighPriorityApp (PID: 17628)
+2026-04-19 00:38:20,479 - DynamicResourceAllocator - INFO - Registered program: NormalPriorityApp (PID: 2056)
+2026-04-19 00:38:24,138 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:38:29,130 - DynamicResourceAllocator - INFO - System stopped. Uptime: 13.3 seconds
+2026-04-19 00:38:29,130 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:30,134 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:30,134 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:38:30,134 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:38:30,153 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:38:30,155 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:38:30,156 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:38:31,173 - DynamicResourceAllocator - INFO - Allocation strategy changed to: equal
+2026-04-19 00:38:38,496 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-19 00:38:47,923 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:38:57,043 - DynamicResourceAllocator - INFO - Allocation strategy changed to: demand
+2026-04-19 00:39:05,899 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:39:10,899 - DynamicResourceAllocator - INFO - System stopped. Uptime: 40.7 seconds
+2026-04-19 00:39:10,899 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:39:11,903 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:39:11,904 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:39:11,904 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:39:11,915 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:39:11,929 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:39:11,939 - DynamicResourceAllocator - INFO - Allocation Strategy: demand
+2026-04-19 00:40:08,727 - DynamicResourceAllocator - INFO - Report exported to resource_allocation_report.json
+2026-04-19 00:40:08,777 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:40:13,722 - DynamicResourceAllocator - INFO - System stopped. Uptime: 61.8 seconds
+2026-04-19 00:40:13,722 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:08,846 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:08,848 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:41:08,848 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:08,848 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:41:08,850 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:41:08,850 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:41:09,151 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:41:19,163 - DynamicResourceAllocator - INFO - System stopped. Uptime: 10.3 seconds
+2026-04-19 00:41:19,163 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:19,168 - DynamicResourceAllocator - INFO - Configuration saved to test_config.json
+2026-04-19 00:41:19,206 - DynamicResourceAllocator - INFO - Configuration loaded from test_config.json
+2026-04-19 00:41:19,208 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:19,208 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:41:19,208 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:19,212 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:41:19,212 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:41:19,212 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:41:26,698 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:41:31,698 - DynamicResourceAllocator - INFO - System stopped. Uptime: 12.5 seconds
+2026-04-19 00:41:31,699 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:31,701 - DynamicResourceAllocator - INFO - Allocation strategy changed to: equal
+2026-04-19 00:41:31,703 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-19 00:41:31,703 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:41:31,703 - DynamicResourceAllocator - INFO - Allocation strategy changed to: demand
+2026-04-19 00:41:31,710 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:31,714 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:41:31,714 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:31,717 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:41:31,718 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:41:31,718 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:41:39,913 - DynamicResourceAllocator - INFO - Registered program: TestProcess (PID: 14112)
+2026-04-19 00:41:39,913 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-19 00:41:39,913 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:41:44,918 - DynamicResourceAllocator - INFO - System stopped. Uptime: 13.2 seconds
+2026-04-19 00:41:44,918 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:44,923 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:44,923 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:41:44,927 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:41:44,930 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:41:44,932 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:41:44,934 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:41:52,736 - DynamicResourceAllocator - INFO - Report exported to test_report.json
+2026-04-19 00:41:52,748 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:41:57,735 - DynamicResourceAllocator - INFO - System stopped. Uptime: 12.8 seconds
+2026-04-19 00:41:57,735 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:29,533 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:29,534 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:44:29,534 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:29,534 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:44:29,534 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:44:29,540 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:44:29,862 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:44:39,892 - DynamicResourceAllocator - INFO - System stopped. Uptime: 10.4 seconds
+2026-04-19 00:44:39,893 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:39,896 - DynamicResourceAllocator - INFO - Configuration saved to test_config.json
+2026-04-19 00:44:39,902 - DynamicResourceAllocator - INFO - Configuration loaded from test_config.json
+2026-04-19 00:44:39,909 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:39,912 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:44:39,912 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:39,917 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:44:39,917 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:44:39,917 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:44:47,812 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:44:52,814 - DynamicResourceAllocator - INFO - System stopped. Uptime: 12.9 seconds
+2026-04-19 00:44:52,814 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:52,818 - DynamicResourceAllocator - INFO - Allocation strategy changed to: equal
+2026-04-19 00:44:52,819 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-19 00:44:52,821 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-19 00:44:52,822 - DynamicResourceAllocator - INFO - Allocation strategy changed to: demand
+2026-04-19 00:44:52,825 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:52,827 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:44:52,832 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:44:52,833 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:44:52,833 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:44:52,837 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:45:01,100 - DynamicResourceAllocator - INFO - Registered program: TestProcess (PID: 7484)
+2026-04-19 00:45:01,100 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-19 00:45:01,100 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:45:06,104 - DynamicResourceAllocator - INFO - System stopped. Uptime: 13.3 seconds
+2026-04-19 00:45:06,104 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:45:06,106 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:45:06,107 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:45:06,108 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:45:06,110 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:45:06,112 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:45:06,113 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:45:14,305 - DynamicResourceAllocator - INFO - Report exported to test_report.json
+2026-04-19 00:45:14,348 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:45:19,305 - DynamicResourceAllocator - INFO - System stopped. Uptime: 13.2 seconds
+2026-04-19 00:45:19,306 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:46:43,841 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:46:43,844 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-19 00:46:43,844 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-19 00:46:43,847 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-19 00:46:43,847 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-19 00:46:43,847 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 00:46:53,071 - DynamicResourceAllocator - INFO - Registered program: TestApp (PID: 15836)
+2026-04-19 00:46:53,071 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-19 00:46:53,076 - DynamicResourceAllocator - INFO - Report exported to test_quick.json
+2026-04-19 00:46:53,077 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-19 00:46:58,070 - DynamicResourceAllocator - INFO - System stopped. Uptime: 14.2 seconds
+2026-04-19 00:46:58,070 - DynamicResourceAllocator - INFO - ============================================================

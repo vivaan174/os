@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-04-19T00:40:00.747399",
+  "system_status": {
+    "running": true,
+    "uptime_seconds": 56.787075,
+    "allocation_strategy": "demand",
+    "system_metrics": {
+      "timestamp": "2026-04-19T00:39:59.839469",
+      "cpu_percent": 20.0,
+      "cpu_count": 4,
+      "memory_percent": 82.6,
+      "memory_used_mb": 6472.8125,
+      "memory_total_mb": 7834.71875,
+      "memory_available_mb": 1361.90625,
+      "process_count": 289
+    },
+    "resource_allocations": 0,
+    "tracked_programs": 2,
+    "optimizer_stats": {
+      "current_bottlenecks": 1,
+      "optimization_stats": {
+        "total_optimizations": 13,
+        "successful_reallocations": 0,
+        "bottlenecks_resolved": 3
+      },
+      "performance_history_size": 146,
+      "success_rate": 0.0
+    }
+  },
+  "performance_report": {
+    "timestamp": "2026-04-19T00:40:08.721346",
+    "system_metrics": {
+      "cpu_usage": 20.0,
+      "memory_usage": 82.6,
+      "total_processes": 289
+    },
+    "top_processes_by_cpu": [
+      {
+        "pid": 7176,
+        "name": "AdskAccessUIHost.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 6.57421875
+      },
+      {
+        "pid": 1040,
+        "name": "SecurityHealthSystray.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 0.2890625
+      },
+      {
+        "pid": 4632,
+        "name": "msedge.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 6.1953125
+      },
+      {
+        "pid": 8220,
+        "name": "dllhost.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 0.34765625
+      },
+      {
+        "pid": 12328,
+        "name": "RuntimeBroker.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 1.49609375
+      },
+      {
+        "pid": 13352,
+        "name": "msedge.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 4.98046875
+      },
+      {
+        "pid": 16940,
+        "name": "unsecapp.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 2.39453125
+      },
+      {
+        "pid": 17448,
+        "name": "smartscreen.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 12.27734375
+      },
+      {
+        "pid": 11312,
+        "name": "AdskAccessUIHost.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 13.34765625
+      },
+      {
+        "pid": 18480,
+        "name": "RuntimeBroker.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 5.796875
+      }
+    ],
+    "top_processes_by_memory": [
+      {
+        "pid": 6600,
+        "name": "Code.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 507.8515625
+      },
+      {
+        "pid": 15264,
+        "name": "Code.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 423.21484375
+      },
+      {
+        "pid": 15636,
+        "name": "Code.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 390.51171875
+      },
+      {
+        "pid": 13220,
+        "name": "explorer.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 142.765625
+      },
+      {
+        "pid": 2232,
+        "name": "Spotify.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 139.34765625
+      },
+      {
+        "pid": 12416,
+        "name": "msedge.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 124.19921875
+      },
+      {
+        "pid": 18804,
+        "name": "Code.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 123.51171875
+      },
+      {
+        "pid": 16812,
+        "name": "msedge.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 108.71875
+      },
+      {
+        "pid": 16608,
+        "name": "msedge.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 96.29296875
+      },
+      {
+        "pid": 5492,
+        "name": "Code.exe",
+        "cpu_percent": 0.0,
+        "memory_mb": 79.1171875
+      }
+    ],
+    "optimization_stats": {
+      "current_bottlenecks": 1,
+      "optimization_stats": {
+        "total_optimizations": 14,
+        "successful_reallocations": 0,
+        "bottlenecks_resolved": 3
+      },
+      "performance_history_size": 146,
+      "success_rate": 0.0
+    }
+  }
+}
