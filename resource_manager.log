@@ -37,3 +37,32 @@
 2026-04-19 18:51:49,897 - INFO - Changed allocation strategy to: priority
 2026-04-19 18:51:50,398 - INFO - Changed allocation strategy to: performance
 2026-04-19 18:51:50,909 - INFO - Changed allocation strategy to: demand
+2026-04-20 00:13:09,777 - INFO - Registered process TestApp (PID: 21480) with priority NORMAL
+2026-04-20 00:13:09,789 - INFO - Set priority for PID 21480 to CRITICAL
+2026-04-20 00:13:09,789 - INFO - Set priority for PID 21480 to HIGH
+2026-04-20 00:13:09,789 - INFO - Unregistered process PID: 21480
+2026-04-20 00:15:04,408 - INFO - Registered process TestApp (PID: 13288) with priority NORMAL
+2026-04-20 00:15:04,408 - INFO - Set priority for PID 13288 to CRITICAL
+2026-04-20 00:15:04,409 - INFO - Unregistered process PID: 13288
+2026-04-20 00:28:15,154 - INFO - Changed allocation strategy to: equal
+2026-04-20 00:28:15,656 - INFO - Changed allocation strategy to: priority
+2026-04-20 00:28:16,171 - INFO - Changed allocation strategy to: performance
+2026-04-20 00:28:16,688 - INFO - Changed allocation strategy to: demand
+2026-04-20 00:32:04,252 - ResourceManager - INFO - Process registered: TestApp (PID: 21676)
+2026-04-20 00:32:04,252 - ResourceManager - INFO - Priority updated for PID 21676
+2026-04-20 00:38:12,044 - ResourceManager - INFO - Strategy changed to demand
+2026-04-20 00:39:32,446 - ResourceManager - INFO - Process registered: Windows File Explorer (PID: 13220)
+2026-04-20 00:39:45,548 - ResourceManager - INFO - Priority updated for PID 13220
+2026-04-20 00:39:51,679 - ResourceManager - INFO - Process unregistered (PID: 13220)
+2026-04-20 00:43:51,740 - ResourceManager - INFO - Process registered: Code (PID: 15264)
+2026-04-20 00:43:59,612 - ResourceManager - INFO - Priority updated for PID 15264
+2026-04-20 00:44:05,014 - ResourceManager - INFO - Process unregistered (PID: 15264)
+2026-04-20 00:45:14,399 - ResourceManager - INFO - Process registered: explorer (PID: 13220)
+2026-04-20 00:50:08,416 - ResourceManager - INFO - Process registered: explorer (PID: 13220)
+2026-04-20 00:51:01,417 - ResourceManager - INFO - Strategy changed to demand
+2026-04-20 00:51:31,724 - ResourceManager - INFO - Process registered: code (PID: 8112)
+2026-04-20 00:51:39,615 - ResourceManager - INFO - Priority updated for PID 8112
+2026-04-20 00:51:43,547 - ResourceManager - INFO - Process unregistered (PID: 8112)
+2026-04-20 00:58:48,291 - ResourceManager - INFO - Process registered: pwsh (PID: 10512)
+2026-04-20 00:58:54,449 - ResourceManager - INFO - Priority updated for PID 10512
+2026-04-20 00:59:26,584 - ResourceManager - INFO - Process unregistered (PID: 10512)

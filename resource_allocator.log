@@ -247,3 +247,110 @@
 2026-04-19 18:53:26,329 - DynamicResourceAllocator - INFO - All components started successfully
 2026-04-19 18:53:26,329 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
 2026-04-19 18:53:26,329 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-19 19:38:21,897 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-19 19:38:34,760 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-19 19:39:48,808 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-19 19:49:15,161 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-19 22:47:35,039 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-19 23:11:06,924 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-19 23:38:12,805 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-20 00:13:07,775 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:13:07,775 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:13:07,775 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:13:07,776 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:13:07,776 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-20 00:13:07,776 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:13:09,787 - DynamicResourceAllocator - INFO - Registered program: TestApp (PID: 21480)
+2026-04-20 00:13:09,789 - DynamicResourceAllocator - INFO - Updated priority for PID 21480 to CRITICAL
+2026-04-20 00:13:09,789 - DynamicResourceAllocator - INFO - Updated priority for PID 21480 to HIGH
+2026-04-20 00:13:09,790 - DynamicResourceAllocator - INFO - Unregistered program PID: 21480
+2026-04-20 00:13:09,790 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-20 00:13:19,819 - DynamicResourceAllocator - INFO - System stopped. Uptime: 12.0 seconds
+2026-04-20 00:13:19,819 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:15:02,394 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:15:02,394 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:15:02,395 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:15:02,395 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:15:02,395 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-20 00:15:02,395 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:15:04,408 - DynamicResourceAllocator - INFO - Registered program: TestApp (PID: 13288)
+2026-04-20 00:15:04,408 - DynamicResourceAllocator - INFO - Updated priority for PID 13288 to CRITICAL
+2026-04-20 00:15:04,409 - DynamicResourceAllocator - INFO - Unregistered program PID: 13288
+2026-04-20 00:15:04,409 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-20 00:15:14,440 - DynamicResourceAllocator - INFO - System stopped. Uptime: 12.0 seconds
+2026-04-20 00:15:14,440 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:27:00,912 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:27:00,912 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:27:00,912 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:27:00,913 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:27:00,915 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-20 00:27:00,915 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:28:00,508 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:28:00,509 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:28:00,509 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:28:00,510 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:28:00,510 - DynamicResourceAllocator - INFO - CPU Cores Available: 3
+2026-04-20 00:28:00,510 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:28:15,155 - DynamicResourceAllocator - INFO - Allocation strategy changed to: equal
+2026-04-20 00:28:15,656 - DynamicResourceAllocator - INFO - Allocation strategy changed to: priority
+2026-04-20 00:28:16,172 - DynamicResourceAllocator - INFO - Allocation strategy changed to: performance
+2026-04-20 00:28:16,692 - DynamicResourceAllocator - INFO - Allocation strategy changed to: demand
+2026-04-20 00:28:21,663 - DynamicResourceAllocator - INFO - Stopping Dynamic Resource Allocator...
+2026-04-20 00:28:25,802 - DynamicResourceAllocator - INFO - System stopped. Uptime: 25.3 seconds
+2026-04-20 00:28:25,802 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:29:14,708 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-20 00:32:03,248 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:32:03,248 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:32:03,249 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:32:03,250 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:32:03,250 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:32:03,250 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:32:04,254 - DynamicResourceAllocator - INFO - Stopping system...
+2026-04-20 00:32:06,358 - DynamicResourceAllocator - INFO - System stopped. Uptime: 3.1 seconds
+2026-04-20 00:32:06,358 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:33:11,978 - DynamicResourceAllocator - WARNING - CRITICAL: CPU usage at 100.0% - triggering emergency throttling
+2026-04-20 00:36:09,753 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:36:09,755 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:36:09,756 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:36:09,760 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:36:09,760 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:36:09,760 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:43:19,471 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:43:19,471 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:43:19,471 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:43:19,471 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:43:19,471 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:43:19,471 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:44:52,979 - DynamicResourceAllocator - INFO - Stopping system...
+2026-04-20 00:44:54,483 - DynamicResourceAllocator - INFO - System stopped. Uptime: 95.0 seconds
+2026-04-20 00:44:54,483 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:45:14,382 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:45:14,382 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:45:14,382 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:45:14,382 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:45:14,382 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:45:14,382 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:45:14,400 - DynamicResourceAllocator - INFO - Stopping system...
+2026-04-20 00:45:17,494 - DynamicResourceAllocator - INFO - System stopped. Uptime: 3.1 seconds
+2026-04-20 00:45:17,495 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:50:08,416 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:50:08,416 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:50:08,416 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:50:08,416 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:50:08,416 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:50:08,416 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:50:11,031 - DynamicResourceAllocator - INFO - Stopping system...
+2026-04-20 00:50:13,420 - DynamicResourceAllocator - INFO - System stopped. Uptime: 5.0 seconds
+2026-04-20 00:50:13,420 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:50:57,664 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:50:57,664 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:50:57,664 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:50:57,667 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:50:57,667 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:50:57,667 - DynamicResourceAllocator - INFO - Allocation Strategy: performance
+2026-04-20 00:58:11,259 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:58:11,260 - DynamicResourceAllocator - INFO - Starting Dynamic Resource Allocator
+2026-04-20 00:58:11,260 - DynamicResourceAllocator - INFO - ============================================================
+2026-04-20 00:58:11,262 - DynamicResourceAllocator - INFO - All components started successfully
+2026-04-20 00:58:11,262 - DynamicResourceAllocator - INFO - CPU Cores Available: 4
+2026-04-20 00:58:11,262 - DynamicResourceAllocator - INFO - Allocation Strategy: performance

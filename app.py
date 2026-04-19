@@ -761,40 +761,140 @@ class UnifiedResourceAllocatorApp:
             return f"❌ Error: {str(e)}"
     
     def get_tracked(self) -> str:
-        """Get tracked programs"""
+        """Get tracked programs with system summary"""
         tracked = self.allocator.manager.get_all_allocations()
+        metrics = self.allocator.monitor.get_latest_system_metrics()
         
-        if not tracked:
-            return "No programs tracked yet"
+        text = "📋 TRACKED PROGRAMS & SYSTEM STATUS\n"
+        text += "=" * 60 + "\n\n"
         
-        text = "📋 TRACKED PROGRAMS\n"
-        text += "=" * 50 + "\n"
-        for pid, info in tracked.items():
-            text += f"\nPID: {pid}\n"
-            text += f"  Name: {info['name']}\n"
-            text += f"  Priority: {info['priority'].name}\n"
+        # System metrics always shown
+        if metrics:
+            text += "📊 CURRENT SYSTEM METRICS\n"
+            text += f"  CPU Usage: {metrics.cpu_percent}% ({metrics.cpu_count} cores)\n"
+            text += f"  Memory: {metrics.memory_percent}% ({metrics.memory_used_mb:.0f}/{metrics.memory_total_mb:.0f} MB)\n"
+            text += f"  Available RAM: {metrics.memory_available_mb:.0f} MB\n"
+            text += f"  Total Processes: {metrics.process_count}\n"
+            text += "\n"
+        
+        # Tracked programs section
+        text += f"🎯 TRACKED PROGRAMS: {len(tracked)}\n"
+        text += "-" * 60 + "\n"
+        
+        if tracked:
+            for pid, info in tracked.items():
+                try:
+                    proc = psutil.Process(pid)
+                    proc_cpu = proc.cpu_percent(interval=0.1)
+                    proc_mem = proc.memory_percent()
+                    text += f"\n  PID: {pid}\n"
+                    text += f"    Name: {info['name']}\n"
+                    text += f"    Priority: {info['priority'].name}\n"
+                    text += f"    CPU: {proc_cpu}% | Memory: {proc_mem}%\n"
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    text += f"\n  PID: {pid} (process ended or inaccessible)\n"
+                    text += f"    Name: {info['name']}\n"
+                    text += f"    Priority: {info['priority'].name}\n"
+        else:
+            text += "  ⚠️  No processes tracked yet.\n"
+            text += "  👉 Use Programs tab to register processes\n"
+        
+        text += "\n" + "-" * 60 + "\n"
+        text += f"🎮 System Status: {'🟢 RUNNING' if self.allocator.running else '🔴 STOPPED'}\n"
+        text += f"📈 Strategy: {self.allocator.manager.strategy.value}\n"
         
         return text
     
     def get_report(self) -> str:
-        """Get performance report"""
+        """Get comprehensive performance report"""
         try:
-            report = self.allocator.get_performance_report()
+            # Get all data sources
+            tracked = self.allocator.manager.get_all_allocations()
+            metrics = self.allocator.monitor.get_latest_system_metrics()
             
-            text = "📈 PERFORMANCE REPORT\n"
-            text += "=" * 60 + "\n"
+            text = "📈 COMPREHENSIVE PERFORMANCE REPORT\n"
+            text += "=" * 70 + "\n\n"
             
-            text += f"Tracked Processes: {report['tracked_processes']}\n"
-            text += f"Status: {report['status']}\n"
+            # System Status Section
+            text += "🖥️  SYSTEM STATUS\n"
+            text += "-" * 70 + "\n"
+            sys_status = 'ACTIVE 🟢' if self.allocator.running else 'INACTIVE 🔴'
+            text += f"Status: {sys_status}\n"
+            text += f"Strategy: {self.allocator.manager.strategy.value.upper()}\n"
             
-            if report.get('optimization_recommendations'):
-                text += "\n💡 RECOMMENDATIONS\n"
-                for rec in report['optimization_recommendations']:
-                    text += f"• {rec}\n"
+            if self.allocator.start_time:
+                uptime = (datetime.now() - self.allocator.start_time).total_seconds()
+                minutes = int(uptime) // 60
+                seconds = int(uptime) % 60
+                text += f"Uptime: {minutes}m {seconds}s\n"
+            
+            text += "\n"
+            
+            # System Metrics Section
+            if metrics:
+                text += "📊 REAL-TIME METRICS\n"
+                text += "-" * 70 + "\n"
+                text += f"CPU Usage: {metrics.cpu_percent}% (Cores: {metrics.cpu_count})\n"
+                text += f"Memory: {metrics.memory_percent}% ({metrics.memory_used_mb:.0f}MB used / {metrics.memory_total_mb:.0f}MB total)\n"
+                text += f"Available RAM: {metrics.memory_available_mb:.0f}MB\n"
+                text += f"Total Processes: {metrics.process_count}\n"
+                text += "\n"
+            
+            # Tracked Processes Section
+            text += "📋 TRACKED PROCESSES\n"
+            text += "-" * 70 + "\n"
+            text += f"Monitored: {len(tracked)} processes\n"
+            
+            if tracked:
+                for pid, info in tracked.items():
+                    try:
+                        proc = psutil.Process(pid)
+                        status = "🟢" if proc.is_running() else "🔴"
+                        cpu = proc.cpu_percent(interval=0.1)
+                        mem = proc.memory_percent()
+                        text += f"  {status} {info['name']} (PID: {pid}) | Priority: {info['priority'].name} | CPU: {cpu}% | Mem: {mem}%\n"
+                    except (psutil.NoSuchProcess, psutil.AccessDenied):
+                        text += f"  🔴 {info['name']} (PID: {pid}) [Not accessible]\n"
+            else:
+                text += "  (No processes being tracked)\n"
+            
+            text += "\n"
+            
+            # Recommendations Section
+            text += "💡 SMART RECOMMENDATIONS\n"
+            text += "-" * 70 + "\n"
+            
+            recommendations = []
+            
+            if metrics:
+                if metrics.cpu_percent > 80:
+                    recommendations.append(f"⚠️  HIGH CPU ({metrics.cpu_percent}%) - Consider reducing workload or prioritizing critical tasks")
+                if metrics.memory_percent > 85:
+                    recommendations.append(f"⚠️  HIGH MEMORY ({metrics.memory_percent}%) - Close unnecessary applications")
+                if metrics.process_count > 400:
+                    recommendations.append(f"⚠️  MANY PROCESSES ({metrics.process_count}) - System getting crowded, may impact performance")
+                
+                if not recommendations:
+                    recommendations.append("✅ System running optimally - All metrics within normal range")
+            
+            if not tracked and self.allocator.running:
+                recommendations.append("💡 TIP: Register important processes to monitor resource allocation")
+            
+            if tracked:
+                low_priority_count = sum(1 for info in tracked.values() if info['priority'].value <= 2)
+                if low_priority_count > 0 and metrics and metrics.cpu_percent > 70:
+                    recommendations.append(f"💡 {low_priority_count} low-priority process(es) can be suspended if needed")
+            
+            for rec in recommendations:
+                text += f"  {rec}\n"
+            
+            text += "\n" + "=" * 70 + "\n"
+            text += "Updated: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n"
             
             return text
         except Exception as e:
-            return f"❌ Error: {str(e)}"
+            self.logger.error(f"Report generation error: {e}")
+            return f"❌ Error generating report: {str(e)}\n\nSystem Status: {'Running' if self.allocator.running else 'Stopped'}"
     
     # ========== WORKLOAD TESTING METHODS ==========
     def simulation_cpu(self, intensity: int) -> str:
@@ -952,15 +1052,42 @@ def create_interface():
             
             # Tracked
             with gr.Tab("🎯 Tracked"):
-                track_btn = gr.Button("🔄 Refresh", size="lg", variant="primary")
-                track_display = gr.Textbox(label="Tracked Programs", lines=15, interactive=False)
-                track_btn.click(app.get_tracked, outputs=track_display)
+                with gr.Row():
+                    with gr.Column():
+                        track_btn = gr.Button("🔄 Auto-Refresh", size="lg", variant="primary")
+                        refresh_rate = gr.Slider(1, 10, value=2, step=1, label="Refresh every N seconds")
+                with gr.Row():
+                    track_display = gr.Textbox(label="Tracked Programs & System Status", lines=25, interactive=False)
+                
+                # Auto-refresh logic
+                def auto_refresh_tracked():
+                    return app.get_tracked()
+                
+                track_btn.click(auto_refresh_tracked, outputs=track_display)
+                # Trigger initial load
+                with gr.Tab("🎯 Tracked"):
+                    gr.on(
+                        triggers=[track_btn.click],
+                        fn=auto_refresh_tracked,
+                        outputs=[track_display]
+                    )
             
             # Reports
             with gr.Tab("📈 Reports"):
-                report_btn = gr.Button("📊 Generate", size="lg", variant="primary")
-                report_display = gr.Textbox(label="Report", lines=15, interactive=False)
-                report_btn.click(app.get_report, outputs=report_display)
+                with gr.Row():
+                    with gr.Column(scale=1):
+                        report_btn = gr.Button("📊 Full Report", size="lg", variant="primary")
+                    with gr.Column(scale=3):
+                        gr.Markdown("_Live system analysis with recommendations_")
+                
+                with gr.Row():
+                    report_display = gr.Textbox(label="Performance Analysis", lines=30, interactive=False)
+                
+                # Auto-refresh logic
+                def auto_refresh_report():
+                    return app.get_report()
+                
+                report_btn.click(auto_refresh_report, outputs=report_display)
             
             # Workload Testing
             with gr.Tab("⚡ Workload Test"):
