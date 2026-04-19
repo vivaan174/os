@@ -273,18 +273,218 @@ class PerformanceOptimizer:
                 self.logger.error(f"Optimization error: {e}")
     
     def _optimize_allocations(self, metrics: SystemMetrics):
-        """Optimize resource allocations"""
+        """Optimize resource allocations with adaptive control"""
+        # Detect high utilization and apply adaptive controls
+        if metrics.cpu_percent > 85:
+            self.logger.warning(f"HIGH CPU: {metrics.cpu_percent}% - Applying adaptive control")
+            self._apply_adaptive_resource_control(metrics, 'cpu')
+        
+        if metrics.memory_percent > 90:
+            self.logger.warning(f"HIGH MEMORY: {metrics.memory_percent}% - Applying adaptive control")
+            self._apply_adaptive_resource_control(metrics, 'memory')
+        
+        # Log warnings for elevated usage
         if metrics.cpu_percent > 80:
-            self.logger.warning(f"High CPU usage: {metrics.cpu_percent}%")
+            self.logger.info(f"Elevated CPU usage: {metrics.cpu_percent}%")
         if metrics.memory_percent > 85:
-            self.logger.warning(f"High memory usage: {metrics.memory_percent}%")
+            self.logger.info(f"Elevated memory usage: {metrics.memory_percent}%")
+    
+    def _apply_adaptive_resource_control(self, metrics: SystemMetrics, resource_type: str):
+        """Apply adaptive resource control by suspending/limiting non-critical processes"""
+        try:
+            tracked = self.manager.get_all_allocations()
+            
+            if not tracked:
+                return
+            
+            # Sort processes by priority
+            sorted_procs = sorted(
+                tracked.items(),
+                key=lambda x: x[1]['priority'].value,
+                reverse=True
+            )
+            
+            # Suspend lower priority processes if needed
+            for pid, proc_info in sorted_procs:
+                priority = proc_info['priority']
+                
+                # Skip critical and high priority processes
+                if priority.value >= ProcessPriority.NORMAL.value:
+                    continue
+                
+                try:
+                    process = psutil.Process(pid)
+                    # Suspend low/background processes under high load
+                    if priority in [ProcessPriority.LOW, ProcessPriority.BACKGROUND]:
+                        if process.status() != psutil.STATUS_STOPPED:
+                            process.suspend()
+                            self.logger.info(f"Suspended process {pid} ({proc_info['name']}) - Resource: {resource_type}")
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
+        except Exception as e:
+            self.logger.error(f"Error in adaptive resource control: {e}")
     
     def get_optimization_report(self) -> Dict:
         """Get optimization report"""
+        tracked = self.manager.get_all_allocations()
+        
+        recommendations = []
+        metrics = self.monitor.get_latest_system_metrics()
+        
+        if metrics:
+            if metrics.cpu_percent > 80:
+                recommendations.append("High CPU: Consider reducing process count or increasing priorities")
+            if metrics.memory_percent > 85:
+                recommendations.append("High Memory: Close unnecessary applications")
+            if metrics.process_count > 300:
+                recommendations.append("Many processes running: May impact system performance")
+        
         return {
-            'optimizations_performed': len(self.manager.tracked_processes),
-            'status': 'active'
+            'tracked_processes': len(tracked),
+            'status': 'active' if self.running else 'inactive',
+            'optimization_recommendations': recommendations
         }
+
+# ============================================================================
+# WORKLOAD SIMULATOR (For Testing & Stress Testing)
+# ============================================================================
+
+class WorkloadSimulator:
+    """Simulate various workloads for testing resource allocation"""
+    
+    def __init__(self):
+        self.active_threads = []
+        self.stop_event = threading.Event()
+        self.logger = self._setup_logger()
+    
+    def _setup_logger(self):
+        logger = logging.getLogger('WorkloadSimulator')
+        logger.handlers.clear()
+        handler = logging.FileHandler('workload_simulator.log')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        logger.setLevel(logging.INFO)
+        return logger
+    
+    def start_cpu_workload(self, intensity: int = 50, duration: int = 60) -> str:
+        """Start CPU stress test
+        
+        Args:
+            intensity: 0-100 (percentage of CPU to stress)
+            duration: How many seconds to run
+        """
+        try:
+            intensity = max(0, min(100, intensity))  # Clamp 0-100
+            num_threads = max(1, (intensity // 25) + 1)
+            
+            def cpu_stress():
+                end_time = time.time() + duration
+                while time.time() < end_time and not self.stop_event.is_set():
+                    # CPU-intensive calculation
+                    result = sum([i * i for i in range(100000)])
+            
+            threads = []
+            for i in range(num_threads):
+                t = threading.Thread(target=cpu_stress, daemon=True)
+                t.start()
+                threads.append(t)
+                self.active_threads.append(t)
+            
+            self.logger.info(f"CPU workload started: {intensity}% intensity for {duration}s")
+            return f"✅ CPU workload started: {intensity}% intensity, {duration} seconds"
+        except Exception as e:
+            self.logger.error(f"Error starting CPU workload: {e}")
+            return f"❌ Error: {str(e)}"
+    
+    def start_memory_workload(self, size_mb: int = 100, duration: int = 60) -> str:
+        """Start memory stress test
+        
+        Args:
+            size_mb: Amount of memory to allocate (MB)
+            duration: How many seconds to hold
+        """
+        try:
+            size_mb = max(1, min(1000, size_mb))  # Clamp 1-1000 MB
+            
+            def memory_stress():
+                try:
+                    # Allocate memory
+                    data = bytearray(size_mb * 1024 * 1024)
+                    # Keep it allocated
+                    time.sleep(duration)
+                    del data
+                except Exception as e:
+                    self.logger.error(f"Memory allocation error: {e}")
+            
+            t = threading.Thread(target=memory_stress, daemon=True)
+            t.start()
+            self.active_threads.append(t)
+            
+            self.logger.info(f"Memory workload started: {size_mb}MB for {duration}s")
+            return f"✅ Memory workload started: {size_mb}MB for {duration}s"
+        except Exception as e:
+            self.logger.error(f"Error starting memory workload: {e}")
+            return f"❌ Error: {str(e)}"
+    
+    def start_io_workload(self, num_files: int = 10, duration: int = 30) -> str:
+        """Start I/O stress test
+        
+        Args:
+            num_files: Number of files to create and write to
+            duration: How many seconds to run
+        """
+        try:
+            import tempfile
+            
+            def io_stress():
+                end_time = time.time() + duration
+                temp_dir = tempfile.gettempdir()
+                
+                while time.time() < end_time and not self.stop_event.is_set():
+                    for i in range(num_files):
+                        try:
+                            filepath = os.path.join(temp_dir, f"test_io_{i}.tmp")
+                            with open(filepath, 'w') as f:
+                                f.write("X" * 10000)
+                        except:
+                            pass
+            
+            t = threading.Thread(target=io_stress, daemon=True)
+            t.start()
+            self.active_threads.append(t)
+            
+            self.logger.info(f"I/O workload started: {num_files} files for {duration}s")
+            return f"✅ I/O workload started: {num_files} files for {duration}s"
+        except Exception as e:
+            self.logger.error(f"Error starting I/O workload: {e}")
+            return f"❌ Error: {str(e)}"
+    
+    def get_status(self) -> str:
+        """Get workload status"""
+        active = len([t for t in self.active_threads if t.is_alive()])
+        return f"Active workload threads: {active}"
+    
+    def stop_all(self) -> str:
+        """Stop all workloads"""
+        try:
+            self.stop_event.set()
+            
+            for t in self.active_threads:
+                if t.is_alive():
+                    t.join(timeout=2)
+            
+            self.active_threads = []
+            self.stop_event.clear()
+            
+            self.logger.info("All workloads stopped")
+            return "✅ All workloads stopped"
+        except Exception as e:
+            self.logger.error(f"Error stopping workloads: {e}")
+            return f"❌ Error: {str(e)}"
+
+# Global workload simulator instance
+simulator = WorkloadSimulator()
 
 # ============================================================================
 # DYNAMIC RESOURCE ALLOCATOR
@@ -584,12 +784,10 @@ class UnifiedResourceAllocatorApp:
             text = "📈 PERFORMANCE REPORT\n"
             text += "=" * 60 + "\n"
             
-            summary = report['summary']
-            text += f"Status: {summary['status']}\n"
-            text += f"Uptime: {summary['uptime_seconds']:.1f}s\n"
-            text += f"Tracked: {summary['tracked_processes']}\n"
+            text += f"Tracked Processes: {report['tracked_processes']}\n"
+            text += f"Status: {report['status']}\n"
             
-            if report['optimization_recommendations']:
+            if report.get('optimization_recommendations'):
                 text += "\n💡 RECOMMENDATIONS\n"
                 for rec in report['optimization_recommendations']:
                     text += f"• {rec}\n"
@@ -597,6 +795,39 @@ class UnifiedResourceAllocatorApp:
             return text
         except Exception as e:
             return f"❌ Error: {str(e)}"
+    
+    # ========== WORKLOAD TESTING METHODS ==========
+    def simulation_cpu(self, intensity: int) -> str:
+        """Start CPU workload simulation"""
+        if not self.allocator.running:
+            return "❌ System not running! Start first."
+        intensity = max(0, min(100, int(intensity)))
+        result = simulator.start_cpu_workload(intensity, duration=30)
+        return result
+    
+    def simulation_memory(self, size: int) -> str:
+        """Start memory workload simulation"""
+        if not self.allocator.running:
+            return "❌ System not running! Start first."
+        size = max(1, min(500, int(size)))
+        result = simulator.start_memory_workload(size, duration=30)
+        return result
+    
+    def simulation_io(self, files: int) -> str:
+        """Start I/O workload simulation"""
+        if not self.allocator.running:
+            return "❌ System not running! Start first."
+        files = max(1, min(50, int(files)))
+        result = simulator.start_io_workload(files, duration=30)
+        return result
+    
+    def simulation_status(self) -> str:
+        """Get workload simulation status"""
+        return simulator.get_status()
+    
+    def simulation_stop(self) -> str:
+        """Stop all workload simulations"""
+        return simulator.stop_all()
     
     def get_available_pids(self) -> Dict[int, str]:
         """Get all available PIDs on the system"""
@@ -730,6 +961,42 @@ def create_interface():
                 report_btn = gr.Button("📊 Generate", size="lg", variant="primary")
                 report_display = gr.Textbox(label="Report", lines=15, interactive=False)
                 report_btn.click(app.get_report, outputs=report_display)
+            
+            # Workload Testing
+            with gr.Tab("⚡ Workload Test"):
+                gr.Markdown("### System Stress Testing")
+                
+                with gr.Row():
+                    with gr.Column():
+                        gr.Markdown("#### CPU Stress")
+                        cpu_intensity = gr.Slider(0, 100, value=50, step=10, label="Intensity (%)")
+                        cpu_btn = gr.Button("Start CPU Load", size="lg", variant="secondary")
+                        cpu_out = gr.Textbox(label="Status", lines=2, interactive=False)
+                        cpu_btn.click(app.simulation_cpu, inputs=cpu_intensity, outputs=cpu_out)
+                    
+                    with gr.Column():
+                        gr.Markdown("#### Memory Stress")
+                        mem_size = gr.Slider(1, 500, value=100, step=50, label="Size (MB)")
+                        mem_btn = gr.Button("Start Memory Load", size="lg", variant="secondary")
+                        mem_out = gr.Textbox(label="Status", lines=2, interactive=False)
+                        mem_btn.click(app.simulation_memory, inputs=mem_size, outputs=mem_out)
+                    
+                    with gr.Column():
+                        gr.Markdown("#### I/O Stress")
+                        io_files = gr.Slider(1, 50, value=10, step=5, label="Files")
+                        io_btn = gr.Button("Start I/O Load", size="lg", variant="secondary")
+                        io_out = gr.Textbox(label="Status", lines=2, interactive=False)
+                        io_btn.click(app.simulation_io, inputs=io_files, outputs=io_out)
+                
+                gr.Markdown("---")
+                
+                with gr.Row():
+                    status_btn = gr.Button("📊 Workload Status", size="lg", variant="primary")
+                    stop_btn = gr.Button("⛔ Stop All", size="lg", variant="stop")
+                    status_out = gr.Textbox(label="Output", lines=3, interactive=False)
+                
+                status_btn.click(app.simulation_status, outputs=status_out)
+                stop_btn.click(app.simulation_stop, outputs=status_out)
     
     return interface
 
