@@ -29,3 +29,11 @@
 2026-04-19 00:45:01,100 - INFO - Changed allocation strategy to: priority
 2026-04-19 00:46:53,071 - INFO - Registered process TestApp (PID: 15836) with priority NORMAL
 2026-04-19 00:46:53,071 - INFO - Changed allocation strategy to: priority
+2026-04-19 18:48:14,062 - INFO - Changed allocation strategy to: equal
+2026-04-19 18:48:14,575 - INFO - Changed allocation strategy to: priority
+2026-04-19 18:48:15,076 - INFO - Changed allocation strategy to: performance
+2026-04-19 18:48:15,585 - INFO - Changed allocation strategy to: demand
+2026-04-19 18:51:49,391 - INFO - Changed allocation strategy to: equal
+2026-04-19 18:51:49,897 - INFO - Changed allocation strategy to: priority
+2026-04-19 18:51:50,398 - INFO - Changed allocation strategy to: performance
+2026-04-19 18:51:50,909 - INFO - Changed allocation strategy to: demand
