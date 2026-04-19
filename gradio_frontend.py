@@ -89,10 +89,16 @@ class GradioResourceAllocatorUI:
         if not self.allocator.running:
             return "❌ System not running! Start the system first."
         
-        if not program_pid:
-            return "❌ Please enter a valid PID"
+        # Convert float to int and validate
+        try:
+            program_pid = int(program_pid) if program_pid else None
+        except (ValueError, TypeError):
+            return "❌ Invalid PID format. Please enter a valid number."
         
-        if not program_name:
+        if not program_pid or program_pid <= 0:
+            return "❌ Please enter a valid PID (positive number)"
+        
+        if not program_name or program_name.strip() == "":
             program_name = f"Program_{program_pid}"
         
         try:
@@ -108,23 +114,31 @@ class GradioResourceAllocatorUI:
             if success:
                 return f"✅ Registered: {program_name} (PID: {program_pid}) with priority: {priority}"
             else:
-                return f"❌ Failed to register program"
+                return f"❌ Failed to register program. It may already be registered."
         except psutil.NoSuchProcess:
-            return f"❌ Process with PID {program_pid} not found"
+            return f"❌ Process with PID {program_pid} not found or not accessible"
+        except psutil.AccessDenied:
+            return f"❌ Access denied for PID {program_pid}. Try running as administrator."
         except Exception as e:
             return f"❌ Error: {str(e)}"
     
     def unregister_program(self, program_pid: int) -> str:
         """Unregister a program"""
-        if not program_pid:
-            return "❌ Please enter a valid PID"
+        # Convert float to int and validate
+        try:
+            program_pid = int(program_pid) if program_pid else None
+        except (ValueError, TypeError):
+            return "❌ Invalid PID format. Please enter a valid number."
+        
+        if not program_pid or program_pid <= 0:
+            return "❌ Please enter a valid PID (positive number)"
         
         try:
             success = self.allocator.unregister_program(program_pid)
             if success:
                 return f"✅ Unregistered program (PID: {program_pid})"
             else:
-                return f"❌ Program PID {program_pid} not found"
+                return f"❌ Program PID {program_pid} not found or not registered"
         except Exception as e:
             return f"❌ Error: {str(e)}"
     
@@ -147,8 +161,14 @@ class GradioResourceAllocatorUI:
     
     def set_priority(self, program_pid: int, priority: str) -> str:
         """Change priority of a program"""
-        if not program_pid:
-            return "❌ Please enter a valid PID"
+        # Convert float to int and validate
+        try:
+            program_pid = int(program_pid) if program_pid else None
+        except (ValueError, TypeError):
+            return "❌ Invalid PID format. Please enter a valid number."
+        
+        if not program_pid or program_pid <= 0:
+            return "❌ Please enter a valid PID (positive number)"
         
         try:
             priority_enum = ProcessPriority[priority.upper().replace(" ", "_")]
@@ -156,7 +176,7 @@ class GradioResourceAllocatorUI:
             if success:
                 return f"✅ Priority updated for PID {program_pid} to: {priority}"
             else:
-                return f"❌ Program PID {program_pid} not found"
+                return f"❌ Program PID {program_pid} not found or not registered"
         except KeyError:
             return f"❌ Invalid priority: {priority}"
         except Exception as e:
