@@ -1,36 +1,39 @@
-# Dynamic Resource Allocation System
+# Dynamic Resource Allocator (C)
 
-This project demonstrates a Python-based resource manager that monitors system processes and dynamically adjusts CPU and memory utilization by changing process priority and suspending low-priority processes.
+A high-performance system resource allocator written in C. It monitors CPU and memory usage, manages workloads via a REST API, and dynamically adjusts process priorities using direct system calls.
+
+## Build
+
+```bash
+gcc -o allocator allocator.c -lpthread
+```
+
+## Run
+
+```bash
+./allocator
+```
+
+The server starts on `http://localhost:8080` by default.
 
 ## Features
 
-- Monitor CPU and memory usage for active processes
-- Detect high utilization and prioritize critical workloads
-- Lower priority or suspend non-critical processes when thresholds are exceeded
-- Simulate multiple workloads for testing
+- Real-time CPU and memory monitoring
+- REST API for workload submission and management
+- Dynamic process priority adjustment via `fork`/`execvp`
+- Thread-safe multi-client HTTP server
+- Live performance metrics
 
-## Installation
+## API Endpoints
 
-```powershell
-cd c:\Users\anshika\Downloads\Speckey-main\Speckey-main\os
-python -m pip install -r requirements.txt
-```
-
-## Usage
-
-Start the resource manager:
-
-```powershell
-python main.py --cpu-threshold 70 --mem-threshold 70 --interval 1.0
-```
-
-Run the monitor with a simulated workload:
-
-```powershell
-python main.py --simulate --duration 60
-```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/status` | System status and metrics |
+| POST | `/api/workload` | Submit a new workload |
+| GET | `/api/workloads` | List all workloads |
+| DELETE | `/api/workload/:id` | Stop a workload |
 
 ## Notes
 
-- On Windows, process priority changes require administrator permissions for some targets.
-- This implementation uses `psutil` and Windows priority classes; it is intended as a demonstration rather than a full production scheduler.
+- Requires a POSIX-compatible system (Linux/macOS) or WSL on Windows.
+- Run with appropriate permissions for process priority changes.
