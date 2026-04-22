@@ -4,6 +4,10 @@ __pycache__/
 *$py.class
 *.so
 .Python
+performance_optimizer.log
+resource_allocator.log
+resource_manager.log
+allocator
 build/
 develop-eggs/
 dist/

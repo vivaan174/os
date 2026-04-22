@@ -66,3 +66,8 @@
 2026-04-20 00:58:48,291 - ResourceManager - INFO - Process registered: pwsh (PID: 10512)
 2026-04-20 00:58:54,449 - ResourceManager - INFO - Priority updated for PID 10512
 2026-04-20 00:59:26,584 - ResourceManager - INFO - Process unregistered (PID: 10512)
+2026-04-22 19:50:05,264 - ResourceManager - INFO - Process registered: Asdddddddddddddddd (PID: 16080)
+2026-04-22 19:50:14,307 - ResourceManager - INFO - Priority updated for PID 16080
+2026-04-22 19:50:20,000 - ResourceManager - INFO - Process unregistered (PID: 16080)
+2026-04-22 19:50:34,409 - ResourceManager - INFO - Process registered: Asdddddddddddddddd (PID: 16080)
+2026-04-22 19:50:51,096 - ResourceManager - INFO - Process unregistered (PID: 16080)
