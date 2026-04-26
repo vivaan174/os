@@ -32,6 +32,7 @@
 #define BUFFER_SIZE 16384
 #define MAX_JSON_SIZE 65536
 #define PORT 7860
+#define SAFE_MEMORY_THRESHOLD 80.0
 
 /* ============================================================================
  * DATA STRUCTURES
@@ -94,6 +95,7 @@ typedef struct {
     pthread_t optimizer_thread;
     pthread_t server_thread;
     int shutdown_flag;
+    int stop_workloads_flag;
 } SystemState;
 
 /* ============================================================================
@@ -105,6 +107,49 @@ SystemState state = {0};
 /* ============================================================================
  * UTILITY FUNCTIONS
  * ============================================================================ */
+
+void resume_all_processes() {
+    pthread_mutex_lock(&state.lock);
+
+    for (int i = 0; i < state.tracked_count; i++) {
+        if (state.tracked[i].active) {
+            kill(state.tracked[i].pid, SIGCONT);
+        }
+    }
+
+    pthread_mutex_unlock(&state.lock);
+}
+
+// ================= OOM PROTECTION =================
+void protect_self_from_oom() {
+    FILE *f = fopen("/proc/self/oom_score_adj", "w");
+    if (f) {
+        fprintf(f, "-1000");  // Protect allocator (never kill)
+        fclose(f);
+    }
+}
+
+void set_oom_score(pid_t pid, int score) {
+    char path[64];
+    snprintf(path, sizeof(path), "/proc/%d/oom_score_adj", pid);
+
+    FILE *f = fopen(path, "w");
+    if (f) {
+        fprintf(f, "%d", score);
+        fclose(f);
+    }
+}
+
+int get_oom_score_for_priority(ProcessPriority p) {
+    switch (p) {
+        case PRIORITY_CRITICAL: return -1000;
+        case PRIORITY_HIGH: return -500;
+        case PRIORITY_NORMAL: return 0;
+        case PRIORITY_LOW: return 500;
+        case PRIORITY_BACKGROUND: return 1000;
+        default: return 0;
+    }
+}
 
 const char* priority_to_string(ProcessPriority p) {
     switch(p) {
@@ -383,6 +428,8 @@ int register_process(int pid, const char *name, ProcessPriority priority) {
         state.tracked[state.tracked_count].registered_time = time(NULL);
         state.tracked[state.tracked_count].cpu_percent = 0.0;
         state.tracked[state.tracked_count].memory_percent = 0.0;
+	int score = get_oom_score_for_priority(priority);
+	set_oom_score(pid, score);
         state.tracked_count++;
         pthread_mutex_unlock(&state.lock);
         return 1;
@@ -413,6 +460,8 @@ int set_priority(int pid, ProcessPriority priority) {
     for (int i = 0; i < state.tracked_count; i++) {
         if (state.tracked[i].pid == pid && state.tracked[i].active) {
             state.tracked[i].priority = priority;
+	    int score = get_oom_score_for_priority(priority);
+	    set_oom_score(pid, score);
             pthread_mutex_unlock(&state.lock);
             return 1;
         }
@@ -435,29 +484,49 @@ int get_tracked_count() {
  * ============================================================================ */
 
 void apply_adaptive_control() {
-    if (state.history_count == 0) return;
-    
-    SystemMetrics *latest = &state.metrics[state.history_count - 1];
-    
-    pthread_mutex_lock(&state.lock);
-    
-    if (latest->cpu_percent > 85 || latest->memory_percent > 90) {
-        // Suspend low-priority processes
-        for (int i = 0; i < state.tracked_count; i++) {
-            if (state.tracked[i].priority <= PRIORITY_LOW) {
-                kill(state.tracked[i].pid, SIGSTOP);
-            }
-        }
-    } else {
-        // Resume suspended processes if resources available
-        for (int i = 0; i < state.tracked_count; i++) {
-            if (state.tracked[i].priority <= PRIORITY_LOW) {
-                kill(state.tracked[i].pid, SIGCONT);
-            }
-        }
-    }
-    
-    pthread_mutex_unlock(&state.lock);
+	if (state.stop_workloads_flag) return;
+	if (state.history_count == 0) return;
+
+	SystemMetrics *latest = &state.metrics[state.history_count - 1];
+
+	pthread_mutex_lock(&state.lock);
+
+	double cpu = latest->cpu_percent;
+	double mem = latest->memory_percent;
+
+	for (int i = 0; i < state.tracked_count; i++) {
+		if (!state.tracked[i].active) continue;
+
+		pid_t pid = state.tracked[i].pid;
+		ProcessPriority pr = state.tracked[i].priority;
+
+		// 🔥 Multi-level control (prevents OOM)
+
+		if (mem > 85) {
+			if (pr <= PRIORITY_NORMAL) {
+				kill(pid, SIGSTOP);
+				printf("[STOP] PID %d (NORMAL/LOW/BG)\n", pid);
+			}
+		}
+		else if (mem > 75) {
+			if (pr <= PRIORITY_LOW) {
+				kill(pid, SIGSTOP);
+				printf("[STOP] PID %d (LOW/BG)\n", pid);
+			}
+		}
+		else if (cpu > 85) {
+			if (pr <= PRIORITY_LOW) {
+				kill(pid, SIGSTOP);
+				printf("[STOP] PID %d (CPU control)\n", pid);
+			}
+		}
+		else {
+			// Resume everything when safe
+			kill(pid, SIGCONT);
+		}
+	}
+
+	pthread_mutex_unlock(&state.lock);
 }
 
 /* ============================================================================
@@ -471,7 +540,7 @@ void* cpu_workload_thread(void *arg) {
     int duration = 30;
     time_t end = time(NULL) + duration;
     
-    while (time(NULL) < end && !state.shutdown_flag) {
+    while (time(NULL) < end && !state.stop_workloads_flag) {
         volatile double sum = 0;
         for (int i = 0; i < (100000 * intensity / 100); i++) {
             sum += i * i;
@@ -506,7 +575,7 @@ void* io_workload_thread(void *arg) {
     int duration = 30;
     time_t end = time(NULL) + duration;
     
-    while (time(NULL) < end && !state.shutdown_flag) {
+    while (time(NULL) < end && !state.stop_workloads_flag) {
         for (int i = 0; i < num_files; i++) {
             char filename[256];
             snprintf(filename, sizeof(filename), "/tmp/test_io_%d.tmp", i);
@@ -1298,11 +1367,12 @@ void handle_http_request(int client_sock, const char *buffer, int len) {
         }
     }
     else if (strcmp(req.path, "/api/workload-stop") == 0 && strcmp(req.method, "POST") == 0) {
-        state.shutdown_flag = 1;
+        state.stop_workloads_flag = 1;
         sleep(2);
-        state.shutdown_flag = 0;
+        state.stop_workloads_flag = 0;
         send_http_response(client_sock, 200, "application/json", 
             "{\"message\":\"✅ All workloads stopped\"}");
+	resume_all_processes();
     }
     else {
         send_http_response(client_sock, 404, "application/json", 
@@ -1379,6 +1449,7 @@ void* optimizer_thread_func(void *arg) {
  * ============================================================================ */
 
 int main() {
+    protect_self_from_oom();
     printf("\n");
     printf("================================================================================\n");
     printf("🖥️  DYNAMIC RESOURCE ALLOCATOR - FULL-FEATURED C IMPLEMENTATION\n");
