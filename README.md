@@ -4,7 +4,7 @@
 
 A complete, single-file C implementation of a dynamic system resource manager with a built-in HTTP web server, interactive dashboard, REST API, workload simulator, and adaptive process controller — all in **~1,450 lines of pure C**.
 
----
+--- 
  
 ## 📋 Table of Contents
 
