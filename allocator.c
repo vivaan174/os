@@ -71,7 +71,8 @@ typedef struct {
     ProcessPriority priority;
     double cpu_percent;           // Per-process CPU usage
     double memory_percent;         // Per-process memory usage
-    int active;                   // Is process still running?
+    int active;                   // Is process still running
+    int suspended;
     time_t registered_time;       // When was it registered?
 } TrackedProcess;
 
@@ -505,24 +506,28 @@ void apply_adaptive_control() {
 		if (mem > 85) {
 			if (pr <= PRIORITY_NORMAL) {
 				kill(pid, SIGSTOP);
+				state.tracked[i].suspended = 1;
 				printf("[STOP] PID %d (NORMAL/LOW/BG)\n", pid);
 			}
 		}
 		else if (mem > 75) {
 			if (pr <= PRIORITY_LOW) {
 				kill(pid, SIGSTOP);
+				state.tracked[i].suspended = 1;
 				printf("[STOP] PID %d (LOW/BG)\n", pid);
 			}
 		}
 		else if (cpu > 85) {
 			if (pr <= PRIORITY_LOW) {
 				kill(pid, SIGSTOP);
+				state.tracked[i].suspended = 1;
 				printf("[STOP] PID %d (CPU control)\n", pid);
 			}
 		}
 		else {
 			// Resume everything when safe
 			kill(pid, SIGCONT);
+			state.tracked[i].suspended = 0;
 		}
 	}
 
@@ -694,12 +699,13 @@ char* get_tracked_json() {
             
             char proc_str[512];
             snprintf(proc_str, sizeof(proc_str),
-                "{\"pid\":%d,\"name\":\"%s\",\"priority\":\"%s\",\"cpu\":%.1f,\"memory\":%.1f}",
+                "{\"pid\":%d,\"name\":\"%s\",\"priority\":\"%s\",\"cpu\":%.1f,\"memory\":%.1f,\"suspended\":%d}",
                 state.tracked[i].pid,
                 state.tracked[i].name,
                 priority_to_string(state.tracked[i].priority),
                 state.tracked[i].cpu_percent,
-                state.tracked[i].memory_percent
+                state.tracked[i].memory_percent,
+		state.tracked[i].suspended
             );
             strcat(buffer, proc_str);
             first = 0;
@@ -1140,7 +1146,8 @@ char* get_html_page() {
         "      let text = 'Tracked Programs\\n================\\n';\n"
         "      if(result.tracked.length === 0) text += 'None';\n"
         "      result.tracked.forEach(proc => {\n"
-        "        text += `PID: ${proc.pid} - ${proc.name} (${proc.priority}) | CPU: ${proc.cpu}% | Mem: ${proc.memory}%\\n`;\n"
+	"      const status = proc.suspended ? '🔴 SUSPENDED'  : '🟢 RUNNING';"
+        "        text += `[${status}] PID: ${proc.pid} - ${proc.name} (${proc.priority}) | CPU: ${proc.cpu}% | Mem: ${proc.memory}%\\n`;\n"
         "      });\n"
         "      document.getElementById('tracked').innerText = text;\n"
         "    }\n"
